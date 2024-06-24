@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular-1.8.2/angular.min.js"></script>
+    <script type="text/javascript">
+        //module
+        var sample = angular.module("sample", []).run(["$rootScope", function($rootScope){
+            $rootScope.taxPercent = 30;
+        }]);
+        // controller:1
+        sample.controller("empName",["$scope", function($scope){
+            $scope.name = 'bhavesh'
+        }])
+        // controller:2
+        sample.controller("empDetails",["$scope","$rootScope", function($scope,$rootScope){
+            $scope.age = 20;
+            $rootScope.salary = 50; // this way we can create rootScope in any controller.
+            //also we can update the $rootScope.taxPercent here, but remember it will update the rootScope variable bcoz 
+            //we access rootScope variables via reference
+        }])
+    </script>
+</head>
+<body ng-app="sample">
+    salary - {{salary}}
+   <div ng-controller="empName">
+        owner name - {{name}}
+        <div ng-controller="empDetails">
+            he is just {{age}}
+            <br>
+            <!-- this way we can access $rootScope any where -->
+            data from module - {{taxPercent}}   
+        </div>
+   </div>
+</body>
+</html>
