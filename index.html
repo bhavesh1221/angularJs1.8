@@ -1,0 +1,68 @@
+<!-- three ways to access controller to view -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular-1.8.2/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("firstApp",[])
+        app.controller('home', ["$scope",function($scope){
+            $scope.name = 'bhavesh';
+        }])
+    </script>
+</head>
+<body >
+    <div ng-app="firstApp" ng-controller="home">
+        approch 1 {{ name }}
+    </div>
+</body>
+</html>
+
+<!-- 2nd way -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular-1.8.2/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("firstApp",[])
+        app.controller('home',function(){
+            this.name = 'bhavesh';
+        })
+    </script>
+</head>
+<body >
+    <div ng-app="firstApp" ng-controller="home as o">
+        approch 2 {{ o.name }}
+    </div>
+</body>
+</html> -->
+
+
+<!-- hybrid way -->
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular-1.8.2/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("firstApp",[])
+        app.controller('home',["$scope", function($scope){
+            $scope.o = this; // don't know exaclty what this line of code doing here - will understand later
+            this.name = 'bhavesh';
+        }])
+    </script>
+</head>
+<body >
+    <div ng-app="firstApp" ng-controller="home as o">
+        approch 3 {{ o.name }}
+    </div>
+</body>
+</html> -->
